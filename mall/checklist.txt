@@ -1,0 +1,8 @@
+1.메인페이지
+C(controller) IndexController -> V(view) index.jsp
+
+2.회원가입폼
+(C) AddMember.doGet -> (V) addMember.jsp 
+
+3.회원가입액션
+(C) AddMember.doPost -> (M) MemberDao.insertMember 의 리턴값 -> re:(C)getMemberList 
