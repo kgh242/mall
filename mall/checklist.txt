@@ -1,8 +1,15 @@
-1.¸ÞÀÎÆäÀÌÁö
+1.ë©”ì¸íŽ˜ì´ì§€
 C(controller) IndexController -> V(view) index.jsp
 
-2.È¸¿ø°¡ÀÔÆû
+2.íšŒì›ê°€ìž…í¼
 (C) AddMember.doGet -> (V) addMember.jsp 
 
-3.È¸¿ø°¡ÀÔ¾×¼Ç
-(C) AddMember.doPost -> (M) MemberDao.insertMember ÀÇ ¸®ÅÏ°ª -> re:(C)getMemberList 
+3.íšŒì›ê°€ìž…ì•¡ì…˜
+(C) AddMember.doPost -> (M) MemberDao.insertMember() ì˜ ë¦¬í„´ê°’-> re:(C)getMemberList 
+
+# 10/25
+4.ë¡œê·¸ì¸í¼
+(C)Login.doGet -> (V) login.jsp
+
+5.ë¡œê·¸ì¸ì•¡ì…˜
+(C)Login.doGet -> (M) MemberDao.login() -> ì„±ê³µì‹œ : (C)index //ì‹¤íŒ¨ì‹œ : (C)login

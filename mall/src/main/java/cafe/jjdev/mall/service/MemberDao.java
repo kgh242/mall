@@ -52,5 +52,30 @@ public class MemberDao {
  			}
 		return row;
 	}
+	public boolean loginMember(Member member) {
+		System.out.println("Dao 로그인체크");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean isLogin = false;
+		
+		try {
+			conn = this.getConnection();
+			pstmt = conn.prepareStatement("SELECT id, level From member WHERE id=?, pw=?");
+			pstmt.setString(1, member.getId());
+			pstmt.setString(2, member.getPw());
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				isLogin = true;	//SELECT가 있을때 true
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			this.close(conn, pstmt, rs);
+		}
+		return isLogin;
+	}
+	
 }
 	

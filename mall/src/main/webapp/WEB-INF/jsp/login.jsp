@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>회원가입</h1>
-	<form action="<%=request.getContextPath() %>/AddMember" method="post">
+	<h1>로그인 폼</h1>
+	<form action="<%=request.getContextPath() %>/login" method="post">
 	<table border = 1 >
 		<tr>
 			<td>아이디</td>
@@ -18,16 +19,7 @@
 			<td><input type="password" name="pw"></td>
 		</tr>
 		<tr>
-			<td>권한</td>
-			<td>
-				<select name="level">
-				<option value=0>고객</option>
-				<option value=1>관리자</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="submit" value="회원가입"/></td>
+			<td colspan="2"><input type="submit" value="로그인"/></td>
 		</tr>
 	</table>		
 	</form>
