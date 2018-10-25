@@ -8,16 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	Hello <%=request.getAttribute("model") %><br>
-	Hello ${model}
-	<c:if test="${member.level==0}">
-		일반고객
+	<c:if test="${loginMember != null}">
+		${loginMember}님 반갑습니다.
+		<a href="">로그아웃</a>
 	</c:if>
-	<c:if test="${member.level==1}">
-		관리자
+	<c:if test="${loginMember == null }">
+		<a href="">로그인</a>
 	</c:if>
-	<c:forEach var="str" items="${list}">
-		<div>${str}</div>
-	</c:forEach>
 </body>
 </html>

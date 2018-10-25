@@ -6,23 +6,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import cafe.jjdev.mall.service.Member;
 import cafe.jjdev.mall.service.MemberDao;
 
-@WebServlet("/addMember")
+ @WebServlet("/AddMember")
 public class AddMember extends HttpServlet {
 	MemberDao memberDao;
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/WEB-INF/jsp/addMember.jsp").forward(request, response);
+		System.out.println("doGet add실행");
 	}
-
-	@Override
+ 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		memberDao = new MemberDao();
+ 		System.out.println("doPost add실행");
+ 		memberDao = new MemberDao();
 		Member member = new Member();
-		int row = memberDao.insertMember(member);
-	}
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		member.setId(id);
+		member.setPw(pw);
 
-}
+		memberDao.insertMember(member);
+		
+		response.sendRedirect(request.getContextPath()+"/login");
+	}
+ }
