@@ -52,6 +52,7 @@ public class MemberDao {
  			}
 		return row;
 	}
+	//로그인 처리
 	public boolean loginMember(Member member) {
 		System.out.println("Dao 로그인체크");
 		Connection conn = null;
@@ -61,7 +62,7 @@ public class MemberDao {
 		
 		try {
 			conn = this.getConnection();
-			pstmt = conn.prepareStatement("SELECT id, level From member WHERE id=?, pw=?");
+			pstmt = conn.prepareStatement("SELECT id, level From member WHERE id=? and pw=?");
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPw());
 			

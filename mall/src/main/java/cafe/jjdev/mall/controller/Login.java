@@ -13,7 +13,7 @@ import cafe.jjdev.mall.service.MemberDao;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
-	MemberDao memberDao;
+	private MemberDao memberDao;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("loginMember") == null) {
@@ -25,6 +25,7 @@ public class Login extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// boolean MemberDao.login(Member) 
+		System.out.println("doPost login 실행");
 		boolean isLogin = false; //DB
 		Member member = new Member();
 		
@@ -38,7 +39,6 @@ public class Login extends HttpServlet {
 			session.setAttribute("loginMember", request.getParameter("id"));
 			request.getRequestDispatcher("/WEB-INF/jsp/index.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("/login");
 			response.sendRedirect(request.getContextPath()+"/login");
 		}
 	}
