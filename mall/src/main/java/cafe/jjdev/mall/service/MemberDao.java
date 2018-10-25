@@ -27,31 +27,30 @@ public class MemberDao {
         }
     }
 	//회원가입 
-	public void insertMember(Member member){
+	public int insertMember(Member member){
 		System.out.println("Dao 회원가입 실행");
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int row = 0;
 		try {
 			conn = this.getConnection();
 			pstmt = conn.prepareStatement("INSERT INTO member(id,pw,level) VALUES(?,?,?)");
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPw());
-			pstmt.setInt(3, 0);
+			pstmt.setInt(3, member.getLevel());
 			
 			System.out.println(member.getId());
 			System.out.println(member.getPw());
-			pstmt.executeUpdate();
+			System.out.println(member.getLevel());
+			row = pstmt.executeUpdate();
 		} catch(Exception e) {
  			e.printStackTrace();
  		}
  		finally {
  			this.close(conn,pstmt,rs);
  			}
-	}
-	//로그인
-	public void login(Member member) {
-		
+		return row;
 	}
 }
 	

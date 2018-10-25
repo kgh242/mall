@@ -25,10 +25,12 @@ public class AddMember extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
+		
 		member.setId(id);
 		member.setPw(pw);
-
-		memberDao.insertMember(member);
+		member.setLevel(Integer.parseInt(request.getParameter("level")));
+		
+		int row = memberDao.insertMember(member);
 		
 		response.sendRedirect(request.getContextPath()+"/login");
 	}
